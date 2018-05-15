@@ -37,8 +37,17 @@ public class UsuariosServiceImpl implements UsuariosService{
     public void updateUsuarios(Usuarios us) {
     Usuarios entity = dao.findById(us.getId());
         if(entity!=null){
-            
-             //actualizar formulario
+           entity.setNombre(us.getNombre());
+           entity.setApellidoPaterno(us.getApellidoPaterno());
+           entity.setApellidoMaterno(us.getApellidoMaterno());
+           entity.setPass(us.getPass());
+           entity.setEmail(us.getEmail());
+           entity.setDomicilio(us.getDomicilio());
+           entity.setEdad(us.getEdad());
+           entity.setTelefono(us.getTelefono());
+           entity.setActivo(us.getActivo());
+           entity.setTipo(us.getTipo());
+           entity.setLastUpdated(us.getLastUpdated());
         }   
     }
 

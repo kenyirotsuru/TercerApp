@@ -37,7 +37,21 @@ public class PacientesServiceImpl implements PacientesService{
     public void updatePacientes(Pacientes pa) {
         Pacientes entity = dao.findById(pa.getId());
         if(entity!=null){
-            
+           entity.setNombre(pa.getNombre());
+           entity.setApellidoPaterno(pa.getApellidoPaterno());
+           entity.setApellidoMaterno(pa.getApellidoMaterno());
+           entity.setEdad(pa.getEdad());
+           entity.setDireccion(pa.getDireccion());
+           entity.setEstadoCivil(pa.getEstadoCivil());
+           entity.setAfiliacion(pa.getAfiliacion());
+           entity.setAutopadecimiento(pa.getAutopadecimiento());
+           entity.setEscalaAMAI(pa.getEscalaAMAI());
+            entity.setActivo(pa.getActivo());
+           entity.setEmail(pa.getEmail());
+           entity.setEscolaridad(pa.getEscolaridad());
+           entity.setCohabitacion(pa.getCohabitacion());
+           entity.setTelefono(pa.getTelefono());
+           entity.setLastUpdated(pa.getLastUpdated());
              //actualizar formulario
         }            
     }

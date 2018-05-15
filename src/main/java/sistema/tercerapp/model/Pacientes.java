@@ -20,34 +20,36 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Francisco
+ * @author Kenyiro
  */
 @Entity
 @Table(name = "pacientes")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Pacientes.findAll", query = "SELECT p FROM Pacientes p"),
-    @NamedQuery(name = "Pacientes.findById", query = "SELECT p FROM Pacientes p WHERE p.id = :id"),
-    @NamedQuery(name = "Pacientes.findByCreacion", query = "SELECT p FROM Pacientes p WHERE p.creacion = :creacion"),
-    @NamedQuery(name = "Pacientes.findByLastUpdated", query = "SELECT p FROM Pacientes p WHERE p.lastUpdated = :lastUpdated"),
-    @NamedQuery(name = "Pacientes.findByTelefono", query = "SELECT p FROM Pacientes p WHERE p.telefono = :telefono"),
-    @NamedQuery(name = "Pacientes.findByNombre", query = "SELECT p FROM Pacientes p WHERE p.nombre = :nombre"),
-    @NamedQuery(name = "Pacientes.findByApellidoPaterno", query = "SELECT p FROM Pacientes p WHERE p.apellidoPaterno = :apellidoPaterno"),
-    @NamedQuery(name = "Pacientes.findByApellidoMaterno", query = "SELECT p FROM Pacientes p WHERE p.apellidoMaterno = :apellidoMaterno"),
-    @NamedQuery(name = "Pacientes.findByEmail", query = "SELECT p FROM Pacientes p WHERE p.email = :email"),
-    @NamedQuery(name = "Pacientes.findByDireccion", query = "SELECT p FROM Pacientes p WHERE p.direccion = :direccion"),
-    @NamedQuery(name = "Pacientes.findByEdad", query = "SELECT p FROM Pacientes p WHERE p.edad = :edad"),
-    @NamedQuery(name = "Pacientes.findByCohabitacion", query = "SELECT p FROM Pacientes p WHERE p.cohabitacion = :cohabitacion"),
-    @NamedQuery(name = "Pacientes.findByAfiliacion", query = "SELECT p FROM Pacientes p WHERE p.afiliacion = :afiliacion"),
-    @NamedQuery(name = "Pacientes.findByEstadoCivil", query = "SELECT p FROM Pacientes p WHERE p.estadoCivil = :estadoCivil"),
-    @NamedQuery(name = "Pacientes.findByActivo", query = "SELECT p FROM Pacientes p WHERE p.activo = :activo"),
-    @NamedQuery(name = "Pacientes.findByIdFitbit", query = "SELECT p FROM Pacientes p WHERE p.idFitbit = :idFitbit")})
+    @NamedQuery(name = "Pacientes.findAll", query = "SELECT p FROM Pacientes p")
+    , @NamedQuery(name = "Pacientes.findById", query = "SELECT p FROM Pacientes p WHERE p.id = :id")
+    , @NamedQuery(name = "Pacientes.findByCreacion", query = "SELECT p FROM Pacientes p WHERE p.creacion = :creacion")
+    , @NamedQuery(name = "Pacientes.findByLastUpdated", query = "SELECT p FROM Pacientes p WHERE p.lastUpdated = :lastUpdated")
+    , @NamedQuery(name = "Pacientes.findByTelefono", query = "SELECT p FROM Pacientes p WHERE p.telefono = :telefono")
+    , @NamedQuery(name = "Pacientes.findByNombre", query = "SELECT p FROM Pacientes p WHERE p.nombre = :nombre")
+    , @NamedQuery(name = "Pacientes.findByApellidoPaterno", query = "SELECT p FROM Pacientes p WHERE p.apellidoPaterno = :apellidoPaterno")
+    , @NamedQuery(name = "Pacientes.findByApellidoMaterno", query = "SELECT p FROM Pacientes p WHERE p.apellidoMaterno = :apellidoMaterno")
+    , @NamedQuery(name = "Pacientes.findByEmail", query = "SELECT p FROM Pacientes p WHERE p.email = :email")
+    , @NamedQuery(name = "Pacientes.findByDireccion", query = "SELECT p FROM Pacientes p WHERE p.direccion = :direccion")
+    , @NamedQuery(name = "Pacientes.findByEdad", query = "SELECT p FROM Pacientes p WHERE p.edad = :edad")
+    , @NamedQuery(name = "Pacientes.findByCohabitacion", query = "SELECT p FROM Pacientes p WHERE p.cohabitacion = :cohabitacion")
+    , @NamedQuery(name = "Pacientes.findByEscolaridad", query = "SELECT p FROM Pacientes p WHERE p.escolaridad = :escolaridad")
+    , @NamedQuery(name = "Pacientes.findByAfiliacion", query = "SELECT p FROM Pacientes p WHERE p.afiliacion = :afiliacion")
+    , @NamedQuery(name = "Pacientes.findByEstadoCivil", query = "SELECT p FROM Pacientes p WHERE p.estadoCivil = :estadoCivil")
+    , @NamedQuery(name = "Pacientes.findByEscalaAMAI", query = "SELECT p FROM Pacientes p WHERE p.escalaAMAI = :escalaAMAI")
+    , @NamedQuery(name = "Pacientes.findByAutopadecimiento", query = "SELECT p FROM Pacientes p WHERE p.autopadecimiento = :autopadecimiento")
+    , @NamedQuery(name = "Pacientes.findByActivo", query = "SELECT p FROM Pacientes p WHERE p.activo = :activo")
+    , @NamedQuery(name = "Pacientes.findByIdFitbit", query = "SELECT p FROM Pacientes p WHERE p.idFitbit = :idFitbit")})
 public class Pacientes implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -56,68 +58,53 @@ public class Pacientes implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "creacion")
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date creacion;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "LastUpdated")
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date lastUpdated;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
+    @Size(max = 50)
     @Column(name = "telefono")
     private String telefono;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
+    @Size(max = 50)
     @Column(name = "nombre")
     private String nombre;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
-    @Column(name = "Apellido Paterno")
+    @Size(max = 50)
+    @Column(name = "apellidoPaterno")
     private String apellidoPaterno;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
-    @Column(name = "Apellido Materno")
+    @Size(max = 50)
+    @Column(name = "apellidoMaterno")
     private String apellidoMaterno;
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
+    @Size(max = 50)
     @Column(name = "email")
     private String email;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
+    @Size(max = 50)
     @Column(name = "direccion")
     private String direccion;
-    @Basic(optional = false)
-    @NotNull
+    @Size(max = 50)
     @Column(name = "edad")
-    private int edad;
-    @Basic(optional = false)
-    @NotNull
+    private String edad;
     @Column(name = "cohabitacion")
-    private boolean cohabitacion;
-    @Basic(optional = false)
-    @NotNull
+    private Boolean cohabitacion;
+    @Size(max = 75)
+    @Column(name = "escolaridad")
+    private String escolaridad;
+    @Size(max = 50)
     @Column(name = "afiliacion")
-    private boolean afiliacion;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
+    private String afiliacion;
+    @Size(max = 50)
     @Column(name = "estadoCivil")
     private String estadoCivil;
-    @Basic(optional = false)
-    @NotNull
+    @Size(max = 50)
+    @Column(name = "escalaAMAI")
+    private String escalaAMAI;
+    @Size(max = 100)
+    @Column(name = "autopadecimiento")
+    private String autopadecimiento;
     @Column(name = "activo")
-    private boolean activo;
+    private Boolean activo;
     @Column(name = "id_Fitbit")
     private Integer idFitbit;
     @JoinColumn(name = "id_grafica", referencedColumnName = "id")
@@ -141,23 +128,6 @@ public class Pacientes implements Serializable {
 
     public Pacientes(Integer id) {
         this.id = id;
-    }
-
-    public Pacientes(Integer id, Date creacion, Date lastUpdated, String telefono, String nombre, String apellidoPaterno, String apellidoMaterno, String email, String direccion, int edad, boolean cohabitacion, boolean afiliacion, String estadoCivil, boolean activo) {
-        this.id = id;
-        this.creacion = creacion;
-        this.lastUpdated = lastUpdated;
-        this.telefono = telefono;
-        this.nombre = nombre;
-        this.apellidoPaterno = apellidoPaterno;
-        this.apellidoMaterno = apellidoMaterno;
-        this.email = email;
-        this.direccion = direccion;
-        this.edad = edad;
-        this.cohabitacion = cohabitacion;
-        this.afiliacion = afiliacion;
-        this.estadoCivil = estadoCivil;
-        this.activo = activo;
     }
 
     public Integer getId() {
@@ -232,27 +202,35 @@ public class Pacientes implements Serializable {
         this.direccion = direccion;
     }
 
-    public int getEdad() {
+    public String getEdad() {
         return edad;
     }
 
-    public void setEdad(int edad) {
+    public void setEdad(String edad) {
         this.edad = edad;
     }
 
-    public boolean getCohabitacion() {
+    public Boolean getCohabitacion() {
         return cohabitacion;
     }
 
-    public void setCohabitacion(boolean cohabitacion) {
+    public void setCohabitacion(Boolean cohabitacion) {
         this.cohabitacion = cohabitacion;
     }
 
-    public boolean getAfiliacion() {
+    public String getEscolaridad() {
+        return escolaridad;
+    }
+
+    public void setEscolaridad(String escolaridad) {
+        this.escolaridad = escolaridad;
+    }
+
+    public String getAfiliacion() {
         return afiliacion;
     }
 
-    public void setAfiliacion(boolean afiliacion) {
+    public void setAfiliacion(String afiliacion) {
         this.afiliacion = afiliacion;
     }
 
@@ -264,11 +242,27 @@ public class Pacientes implements Serializable {
         this.estadoCivil = estadoCivil;
     }
 
-    public boolean getActivo() {
+    public String getEscalaAMAI() {
+        return escalaAMAI;
+    }
+
+    public void setEscalaAMAI(String escalaAMAI) {
+        this.escalaAMAI = escalaAMAI;
+    }
+
+    public String getAutopadecimiento() {
+        return autopadecimiento;
+    }
+
+    public void setAutopadecimiento(String autopadecimiento) {
+        this.autopadecimiento = autopadecimiento;
+    }
+
+    public Boolean getActivo() {
         return activo;
     }
 
-    public void setActivo(boolean activo) {
+    public void setActivo(Boolean activo) {
         this.activo = activo;
     }
 

@@ -118,7 +118,7 @@
                   </div>
                 <input type="submit" value="Guardar" class="btn btn-success" />
             </form>
-                <input type="submit" value="Salir sin guardar" class="btn btn-primary top-buffer" />
+                <input type="submit" onclick="location.href='/TercerApp'" value="Salir sin guardar" class="btn btn-primary top-buffer" />
             </body>
 
             </html>

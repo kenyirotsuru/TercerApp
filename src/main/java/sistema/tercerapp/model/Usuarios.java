@@ -24,27 +24,27 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Francisco
+ * @author Kenyiro
  */
 @Entity
 @Table(name = "usuarios")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Usuarios.findAll", query = "SELECT u FROM Usuarios u"),
-    @NamedQuery(name = "Usuarios.findById", query = "SELECT u FROM Usuarios u WHERE u.id = :id"),
-    @NamedQuery(name = "Usuarios.findByCreacion", query = "SELECT u FROM Usuarios u WHERE u.creacion = :creacion"),
-    @NamedQuery(name = "Usuarios.findByLastUpdated", query = "SELECT u FROM Usuarios u WHERE u.lastUpdated = :lastUpdated"),
-    @NamedQuery(name = "Usuarios.findByActivo", query = "SELECT u FROM Usuarios u WHERE u.activo = :activo"),
-    @NamedQuery(name = "Usuarios.findByTipo", query = "SELECT u FROM Usuarios u WHERE u.tipo = :tipo"),
-    @NamedQuery(name = "Usuarios.findByNombre", query = "SELECT u FROM Usuarios u WHERE u.nombre = :nombre"),
-    @NamedQuery(name = "Usuarios.findByApellidoPaterno", query = "SELECT u FROM Usuarios u WHERE u.apellidoPaterno = :apellidoPaterno"),
-    @NamedQuery(name = "Usuarios.findByApellidoMaterno", query = "SELECT u FROM Usuarios u WHERE u.apellidoMaterno = :apellidoMaterno"),
-    @NamedQuery(name = "Usuarios.findByDomicilio", query = "SELECT u FROM Usuarios u WHERE u.domicilio = :domicilio"),
-    @NamedQuery(name = "Usuarios.findByPass", query = "SELECT u FROM Usuarios u WHERE u.pass = :pass"),
-    @NamedQuery(name = "Usuarios.findByTelefono", query = "SELECT u FROM Usuarios u WHERE u.telefono = :telefono"),
-    @NamedQuery(name = "Usuarios.findByEstadoCivil", query = "SELECT u FROM Usuarios u WHERE u.estadoCivil = :estadoCivil"),
-    @NamedQuery(name = "Usuarios.findByEmail", query = "SELECT u FROM Usuarios u WHERE u.email = :email"),
-    @NamedQuery(name = "Usuarios.findByEdad", query = "SELECT u FROM Usuarios u WHERE u.edad = :edad")})
+    @NamedQuery(name = "Usuarios.findAll", query = "SELECT u FROM Usuarios u")
+    , @NamedQuery(name = "Usuarios.findById", query = "SELECT u FROM Usuarios u WHERE u.id = :id")
+    , @NamedQuery(name = "Usuarios.findByCreacion", query = "SELECT u FROM Usuarios u WHERE u.creacion = :creacion")
+    , @NamedQuery(name = "Usuarios.findByLastUpdated", query = "SELECT u FROM Usuarios u WHERE u.lastUpdated = :lastUpdated")
+    , @NamedQuery(name = "Usuarios.findByActivo", query = "SELECT u FROM Usuarios u WHERE u.activo = :activo")
+    , @NamedQuery(name = "Usuarios.findByTipo", query = "SELECT u FROM Usuarios u WHERE u.tipo = :tipo")
+    , @NamedQuery(name = "Usuarios.findByNombre", query = "SELECT u FROM Usuarios u WHERE u.nombre = :nombre")
+    , @NamedQuery(name = "Usuarios.findByApellidoPaterno", query = "SELECT u FROM Usuarios u WHERE u.apellidoPaterno = :apellidoPaterno")
+    , @NamedQuery(name = "Usuarios.findByApellidoMaterno", query = "SELECT u FROM Usuarios u WHERE u.apellidoMaterno = :apellidoMaterno")
+    , @NamedQuery(name = "Usuarios.findByDomicilio", query = "SELECT u FROM Usuarios u WHERE u.domicilio = :domicilio")
+    , @NamedQuery(name = "Usuarios.findByPass", query = "SELECT u FROM Usuarios u WHERE u.pass = :pass")
+    , @NamedQuery(name = "Usuarios.findByTelefono", query = "SELECT u FROM Usuarios u WHERE u.telefono = :telefono")
+    , @NamedQuery(name = "Usuarios.findByEstadoCivil", query = "SELECT u FROM Usuarios u WHERE u.estadoCivil = :estadoCivil")
+    , @NamedQuery(name = "Usuarios.findByEmail", query = "SELECT u FROM Usuarios u WHERE u.email = :email")
+    , @NamedQuery(name = "Usuarios.findByEdad", query = "SELECT u FROM Usuarios u WHERE u.edad = :edad")})
 public class Usuarios implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -68,9 +68,7 @@ public class Usuarios implements Serializable {
     @Size(min = 1, max = 50)
     @Column(name = "tipo")
     private String tipo;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
+    @Size(max = 50)
     @Column(name = "nombre")
     private String nombre;
     @Size(max = 50)
@@ -82,13 +80,12 @@ public class Usuarios implements Serializable {
     @Size(max = 50)
     @Column(name = "domicilio")
     private String domicilio;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
+    @Size(max = 50)
     @Column(name = "pass")
     private String pass;
+    @Size(max = 50)
     @Column(name = "telefono")
-    private Integer telefono;
+    private String telefono;
     @Size(max = 50)
     @Column(name = "estadoCivil")
     private String estadoCivil;
@@ -96,8 +93,9 @@ public class Usuarios implements Serializable {
     @Size(max = 50)
     @Column(name = "email")
     private String email;
+    @Size(max = 50)
     @Column(name = "edad")
-    private Integer edad;
+    private String edad;
 
     public Usuarios() {
     }
@@ -106,12 +104,10 @@ public class Usuarios implements Serializable {
         this.id = id;
     }
 
-    public Usuarios(Integer id, boolean activo, String tipo, String nombre, String pass) {
+    public Usuarios(Integer id, boolean activo, String tipo) {
         this.id = id;
         this.activo = activo;
         this.tipo = tipo;
-        this.nombre = nombre;
-        this.pass = pass;
     }
 
     public Integer getId() {
@@ -194,11 +190,11 @@ public class Usuarios implements Serializable {
         this.pass = pass;
     }
 
-    public Integer getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(Integer telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
@@ -218,11 +214,11 @@ public class Usuarios implements Serializable {
         this.email = email;
     }
 
-    public Integer getEdad() {
+    public String getEdad() {
         return edad;
     }
 
-    public void setEdad(Integer edad) {
+    public void setEdad(String edad) {
         this.edad = edad;
     }
 

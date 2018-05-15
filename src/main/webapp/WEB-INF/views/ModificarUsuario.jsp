@@ -8,11 +8,6 @@
             <head>
                 <title>Modificar Usuario</title>
 
-                <script type="text/javascript">
-                    $(document).ready(function() {
-
-                    });
-                </script>
             </head>
 
             <body>
@@ -24,56 +19,69 @@
                                     <div class="row">
                                         <div class="col-4">
                                           <label>Usuario:</label>
-                                            <input type="text" placeholder="id" class="form-control" id="usuarioID" name="usuarioid" >
+                                          <input type="text" placeholder="id" class="form-control" id="usuarioID" name="usuarioid" value="<%= request.getParameter("nombre") %>">
                                         </div>
-                                                            
+                                                          
                                         <div class="creationInfo">
-                                            <p>Usuario creado:     Ultima modificación: </p>
+                                            ID:<input type="number" placeholder="id" class="form-control" id="id" name="id" value="${usuario.getId()}">
+                                            <p>Usuario creado:  ${usuario.getCreacion()}   Ultima modificación: ${usuario.getLastUpdated()}</p>
                                         </div>
                                     </div>
                                     <div class="row top-buffer">
                                         <div class="col-4">
                                           <label>Nombre</label>
-                                            <input type="text" placeholder="Nombre" class="form-control" id="nombreID" name="nombre" >
+                                          <input type="text" placeholder="Nombre" class="form-control" id="nombreID" name="nombre" value="${usuario.getNombre()}">
                                         </div>
                                         <div class="col-4">
-                                           <label>Domicilio</label>
-                                           <input type="text" placeholder="Domicilio" class="form-control" id="domicilioID" name="domicilio" >
+                                          <label>Apellido Paterno</label>
+                                            <input type="text" placeholder="Apellido Paterno" class="form-control" id="aPaternoID" name="aPaterno" value="${usuario.getApellidoPaterno()}">
                                         </div>
+                                        <div class="col-4">
+                                          <label>Apellido Materno</label>
+                                          <input type="text" placeholder="Apellido Materno" class="form-control" id="aMaternoID" name="aMaterno" value="${usuario.getApellidoMaterno()}">
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="row top-buffer">
                                         <div class="col-4">
                                           <label>Contraseña</label>
                                           <input type="password" placeholder="Contraseña" class="form-control" id="passwordID" name="password" >
                                         </div>
-                                    </div>
-                                    <div class="row top-buffer">
                                         <div class="col-4">
-                                          <label>Apellido Paterno</label>
-                                            <input type="text" placeholder="Nombre" class="form-control" id="aPaternoID" name="aPaterno" >
+                                           <label>Domicilio</label>
+                                           <input type="text" placeholder="Domicilio" class="form-control" id="domicilioID" name="domicilio" value="${usuario.getDomicilio()}">
                                         </div>
                                         <div class="col-4">
                                            <label>Teléfono</label>
-                                           <input type="number" placeholder="Tel." class="form-control" id="telefonoID" name="telefono" >
+                                           <input type="text" placeholder="Tel." class="form-control" id="telefonoID" name="telefono" value="${usuario.getTelefono()}">
                                         </div>
-                                        <div class="col-4">
-                                          <label>Estado</label>
-                                          <select id="estadoID" name="estado" class="form-control">
-                                              <option selected>Activo</option>
-                                              <option>Inactivo</option>
-                                            </select>
-                                        </div>
+                                        
                                     </div>
                                     <div class="row top-buffer">
                                         <div class="col-4">
-                                          <label>Apellido Materno</label>
-                                            <input type="text" placeholder="Apellido Materno" class="form-control" id="aMaternoID" name="aMaterno" >
+                                          <label>Estado</label>
+                                          <select id="estadoID" name="estado" class="form-control">
+                                              <option value="0" selected>Activo</option>
+                                              <option value="1">Inactivo</option>
+                                            </select>
                                         </div>
                                         <div class="col-4">
                                            <label>Correo Electrónico</label>
-                                           <input type="text" placeholder="Correo Electrónico" class="form-control" id="emailID" name="email" >
+                                           <input type="text" placeholder="Correo Electrónico" class="form-control" id="emailID" name="email" ${usuario.getEmail()} >
+                                        </div>
+                                        <div class="col-4">
+                                           <label>Edad</label>
+                                           <input type="text" placeholder="Edad" class="form-control" id="edadID" name="edad" value="${usuario.getEdad()}">
+                                        </div>
+                                          <label>Tipo</label>
+                                          <select id="tipoID" name="tipo" class="form-control">
+                                              <option value="0" selected>Usuario</option>
+                                              <option value="1">Administrador</option>
+                                            </select>
                                         </div>
                                     </div>
                                 <div id="submitID">
-                                <input type="submit" value="Registrar" id="" class="btn btn-info">
+                                <input type="submit" value="Modificar" id="" class="btn btn-info" >
                                 </div>
                             </form>
                         </div>

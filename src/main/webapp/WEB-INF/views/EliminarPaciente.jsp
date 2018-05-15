@@ -3,6 +3,7 @@
     Created on : 22-abr-2018, 22:21:23
     Author     : Francisco
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
             <html>
 
@@ -21,7 +22,7 @@
                     <h1 class="well centerData">Eliminar Pacientes</h1>
                     <div class="" id="">
                         <div class="row centerData">
-                            <form role="form" id="formR" method="post" action="pacienteEliminado">
+                            <form role="form" id="formR" method="post" action="<c:url value='/' />pacienteEliminado">
                                     <div class="row">
                                         <div class="one-third column ">
                                         </div>
